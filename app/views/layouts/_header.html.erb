@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <button onclick="pocni()"> Pocni </button>
+  
+  <button onclick="izbrisi()"> Izbrisi bazu </button>
+</div>  
+</nav>
+
+<script>
+
+function pocni() {
+            $.ajax({
+            url: "/pocni",
+            type: "GET",
+            data: { },
+            dataType: "script"}
+            );
+            
+}
+function izbrisi() {
+            $.ajax({
+            url: "/izbrisi",
+            type: "GET",
+            data: { },
+            dataType: "script"}
+            );
+            
+}
+function obelezi() {
+    var arrayPrice = ["btcusd", "ltcusd", "ethusd", "zecusd", "xmrusd", "dshusd", "xrpusd", "iotusd", "eosusd"];
+    var arrayVolume = ["btcusdV", "ltcusdV", "ethusdV", "zecusdV", "xmrusdV", "dshusdV", "xrpusdV", "iotusdV", "eosusdV"];
+    var i;
+    var j;
+    var m;
+    var n;
+    
+for (i = 0; i < arrayPrice.length; i++) {
+        var xx = document.getElementsByClassName(arrayPrice[i]);
+        var x = Array.prototype.slice.call(xx);
+        x.reverse();
+        // zato sto xx nije array nego NodeList objekat
+        for (j = 1; j < x.length; j++) {
+            
+            if ( parseFloat(x[j].getAttribute("value"))/1.01 > parseFloat(x[j-1].getAttribute("value")) ){
+                
+                x[j-1].style.backgroundColor = "#FFEAAA";
+                x[j].style.backgroundColor = "#FFAAAA";
+                
+            }
+        }
+}
+
+
+for (m = 0; m < arrayVolume.length; m++) {
+        var yy = document.getElementsByClassName(arrayVolume[m]);
+       var y = Array.prototype.slice.call(yy);
+       y.reverse();
+        for (n = 1; n < y.length; n++) {
+            
+            if ( parseFloat(y[n].getAttribute("value"))/1.01 > parseFloat(y[n-1].getAttribute("value")) ){
+                
+                y[n].style.backgroundColor = "lightblue";
+                y[n-1].style.backgroundColor = "#FFEAAA";
+                
+            }
+        }
+}
+
+    
+
+    
+    
+    
+    
+    
+}
+
+</script>
