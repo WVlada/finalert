@@ -1,0 +1,10 @@
+th {
+    background-color: grey;
+}
+tr:nth-child(18n) {
+    border-bottom-style: double;
+}
+body {
+    font-family: sans-serif;
+    font-size: 12px !important;
+}
