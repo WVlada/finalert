@@ -86,7 +86,13 @@ class Ticker < ActiveRecord::Base
                 
             end
         
-        izbrisi_sve_preko_48h
+        self.izbrisi_sve_preko_48h
         #########################
+    end
+    
+    def self.izbrisi_sve_preko_48h
+    
+        Ticker.where("created_at < ?", 48.hours.ago).delete_all      
+    
     end
 end
