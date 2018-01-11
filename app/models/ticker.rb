@@ -1,5 +1,5 @@
 class Ticker < ActiveRecord::Base
-    def update
+    def self.update
         require 'uri'
         require 'net/http'
         ##########################
