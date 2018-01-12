@@ -1,6 +1,13 @@
 <div class="container">
     <div class="row">
-    	<button onclick="obelezi()"> Obelezi </button>
+        <div class="col">
+            <canvas id="MyChartSVI" width="400" height="400"></canvas>
+            <button onclick="obelezi()"> Obelezi </button>
+        </div>
+        </div>
+    	<div class="row">
+    	
+    	
     	<div class="col">
     		
     		<table class="pregled_table">
@@ -27,7 +34,7 @@
             </tbody>
             </table>
     	
-    	<canvas id="MyChartSVI" width="400" height="400"></canvas>
+    	
     	
     	</div>
 <div class="col">
@@ -73,7 +80,7 @@ var myLineChart = new Chart(ctx, {
         labels: <%= @vremenaLabels %>,
         datasets: [
                     {
-                    data: <%= ticker.pluck(:last_price) %>,
+                    data: <%= ticker.pluck(:last_price).map {|y| y - ticker.pluck(:last_price)[0] } %>,
                     label: "<%=ticker[0].name%>",
                     borderColor: "<%= @colorsArray[index] %>",
                     fill: false
@@ -98,10 +105,11 @@ var myLineChartSVI = new Chart(ctx2, {
         datasets:
         
         [
-            <% x = @sviPricesi-[@btcusdchart] %>
+            <%# x = @sviPricesi-[@btcusdchart] %>
+            <% x = @sviPricesi %>
             <% x.each_with_index do |prices, index1| %>
             {
-                    data: <%= prices %>,
+                    data: <%= prices.map{|y| y - prices[0]} %>,
                     label: "neki",
                     borderColor: "<%= @colorsArray[index1] %>",
                     fill: false
