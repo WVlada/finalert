@@ -105,8 +105,8 @@ var myLineChartSVI = new Chart(ctx2, {
         datasets:
         
         [
-            <%# x = @sviPricesi-[@btcusdchart] %>
-            <% x = @sviPricesi %>
+            <% x = @sviPricesi-[@btcusdchart] %>
+            <%# x = @sviPricesi %>
             <% x.each_with_index do |prices, index1| %>
             {
                     data: <%= prices.map{|y| y - prices[0]} %>,
