@@ -12,18 +12,18 @@ class StaticController < ApplicationController
         @eosusd = Ticker.where(name: "eosusd")
         @sanusd = Ticker.where(name: "sanusd")
         @omgusd = Ticker.where(name: "omgusd")
-        #@bchusd = Ticker.where(name: "bchusd")
-        #@neousd = Ticker.where(name: "neousd")
-        #@etpusd = Ticker.where(name: "etpusd")
-        #@edousd = Ticker.where(name: "edousd")
-        #@btgusd = Ticker.where(name: "btgusd")
+        @bchusd = Ticker.where(name: "bchusd")
+        @neousd = Ticker.where(name: "neousd")
+        @etpusd = Ticker.where(name: "etpusd")
+        @edousd = Ticker.where(name: "edousd")
+        @btgusd = Ticker.where(name: "btgusd")
         @rrtusd = Ticker.where(name: "rrtusd")
         @qtmusd = Ticker.where(name: "qtmusd")
         @avtusd = Ticker.where(name: "avtusd")
         @datusd = Ticker.where(name: "datusd")
-        @yywusd = Ticker.where(name: "yywusd")
-        @gntusd = Ticker.where(name: "gntusd")
-        @sntusd = Ticker.where(name: "sntusd")
+        #@yywusd = Ticker.where(name: "yywusd")
+        #@gntusd = Ticker.where(name: "gntusd")
+        #@sntusd = Ticker.where(name: "sntusd")
         
         @colorsArray = ["#8e5ea2", "#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
         @vremenaLabels = []
@@ -43,50 +43,67 @@ class StaticController < ApplicationController
         @eosusdchart = @eosusd.pluck(:last_price)
         @sanusdchart = @sanusd.pluck(:last_price)
         @omgusdchart = @omgusd.pluck(:last_price)
-        #@bchusdchart = @bchusd.pluck(:last_price)
-        #@neousdchart = @neousd.pluck(:last_price)
-        #@etpusdchart = @etpusd.pluck(:last_price)
-        #@edousdchart = @edousd.pluck(:last_price)
-        #@btgusdchart = @btgusd.pluck(:last_price)
+        @bchusdchart = @bchusd.pluck(:last_price)
+        @neousdchart = @neousd.pluck(:last_price)
+        @etpusdchart = @etpusd.pluck(:last_price)
+        @edousdchart = @edousd.pluck(:last_price)
+        @btgusdchart = @btgusd.pluck(:last_price)
         @rrtusdchart = @rrtusd.pluck(:last_price)
         @qtmusdchart = @qtmusd.pluck(:last_price)
         @avtusdchart = @avtusd.pluck(:last_price)
         @datusdchart = @datusd.pluck(:last_price)
-        @yywusdchart = @yywusd.pluck(:last_price)
-        @gntusdchart = @gntusd.pluck(:last_price)
-        @sntusdchart = @sntusd.pluck(:last_price)
+        #@yywusdchart = @yywusd.pluck(:last_price)
+        #@gntusdchart = @gntusd.pluck(:last_price)
+        #@sntusdchart = @sntusd.pluck(:last_price)
         
         
         
-        @sviPricesi = [@btcusdchart, @ltcusdchart, @ethusdchart, @zecusdchart, @xmrusdchart, @dshusdchart, @xrpusdchart, @iotusdchart, @eosusdchart, @sanusdchart,
-                        @omgusdchart,
-                        #@bchusdchart,
-                        #@neousdchart,
-                        #@etpusdchart,
-                        #@edousdchart,
-                        #@btgusdchart,
-                        @rrtusdchart,
-                        @qtmusdchart,
-                        @avtusdchart,
-                        @datusdchart,
-                        @yywusdchart,
-                        @gntusdchart,
-                        @sntusdchart]
+        @sviPricesi = [
+                        [ @btcusdchart, "btc"], 
+                        [ @ltcusdchart, "ltc"], 
+                        [ @ethusdchart, "eth"],
+                        [ @zecusdchart, "zec"], 
+                        [ @xmrusdchart, "xmr"],
+                        [ @dshusdchart, "dsh"],
+                        [ @xrpusdchart, "xrp"], 
+                        [ @iotusdchart, "iot"], 
+                        [ @eosusdchart, "eos"], 
+                        [ @sanusdchart, "san"],
+                        [ @omgusdchart, "omg"],
+                        [ @bchusdchart, "bch"],
+                        [ @neousdchart, "neo"],
+                        [ @etpusdchart, "eot"],
+                        [ @edousdchart, "edo"],
+                        [ @btgusdchart, "btg"],
+                        [ @rrtusdchart, "rrt"],
+                        [ @qtmusdchart, "qtm"],
+                        [ @avtusdchart, "avt"],
+                        [ @datusdchart, "dat"]
+                        #,
+                        #[ @yywusdchart, "yyw"]
+                        #,
+                        #[ @gntusdchart, "gnt"],
+                        #[ @sntusdchart, "snt"]
+                        
+                        ]
         
         @sviTickeri = [@btcusd, @ltcusd, @ethusd, @zecusd, @xmrusd, @dshusd, @iotusd, @eosusd, @sanusd,
                         @omgusd,
-                        #@bchusd,
-                        #@neousd,
-                        #@etpusd,
-                        #@edousd,
-                        #@btgusd,
+                        @bchusd,
+                        @neousd,
+                        @etpusd,
+                        @edousd,
+                        @btgusd,
                         @rrtusd,
                         @qtmusd,
                         @avtusd,
-                        @datusd,
-                        @yywusd,
-                        @gntusd,
-                        @sntusd]
+                        @datusd
+                        #,
+                        #@yywusd
+                        #,
+                        #@gntusd,
+                        #@sntusd
+                        ]
         
         @podignutiPrice = []
         @podignutiVolume = []
@@ -129,18 +146,18 @@ class StaticController < ApplicationController
             urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
             urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
             urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
-            #urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
-            #urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
-            #urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
-            #urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
-            #urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
+            urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
+            urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
+            urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
+            urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
+            urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
             urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
             urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
             urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
             urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
-            urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
-            urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
-            urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
+            #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
+            #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
+            #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
             
             urls =  [
                     urlBTC, 
@@ -154,18 +171,20 @@ class StaticController < ApplicationController
                     urlEOS,
                     urlSAN,
                     urlOMG,
-                    #urlBCH,
-                    #urlNEO,
-                    #urlETP,
-                    #urlEDO,
-                    #urlBTG,
+                    urlBCH,
+                    urlNEO,
+                    urlETP,
+                    urlEDO,
+                    urlBTG,
                     urlRRT,
                     urlQTM,
                     urlAVT,
-                    urlDAT,
-                    urlYYW,
-                    urlGNT,
-                    urlSNT
+                    urlDAT
+                    #,
+                    #urlYYW
+                    #,
+                    #urlGNT,
+                    #urlSNT
                     ]
             
             @tickerARRAY = []
@@ -242,18 +261,18 @@ class StaticController < ApplicationController
             urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
             urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
             urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
-            #urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
-            #urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
-            #urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
-            #urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
-            #urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
+            urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
+            urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
+            urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
+            urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
+            urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
             urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
             urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
             urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
             urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
-            urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
-            urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
-            urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
+            #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
+            #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
+            #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
             
             urls =  [
                     urlBTC, 
@@ -267,18 +286,20 @@ class StaticController < ApplicationController
                     urlEOS,
                     urlSAN,
                     urlOMG,
-                    #urlBCH,
-                    #urlNEO,
-                    #urlETP,
-                    #urlEDO,
-                    #urlBTG,
+                    urlBCH,
+                    urlNEO,
+                    urlETP,
+                    urlEDO,
+                    urlBTG,
                     urlRRT,
                     urlQTM,
                     urlAVT,
-                    urlDAT,
-                    urlYYW,
-                    urlGNT,
-                    urlSNT
+                    urlDAT
+                    #,
+                    #urlYYW
+                    #,
+                    #urlGNT,
+                    #urlSNT
                     ]
             
             @tickerARRAY = []

@@ -1,13 +1,14 @@
 <div class="container">
-    <div class="row">
+    
+<div class="row">
         <div class="col">
             <canvas id="MyChartSVI" width="400" height="400"></canvas>
             <button onclick="obelezi()"> Obelezi </button>
         </div>
-        </div>
-    	<div class="row">
-    	
-    	
+</div>
+
+<div class="row">
+
     	<div class="col">
     		
     		<table class="pregled_table">
@@ -37,34 +38,20 @@
     	
     	
     	</div>
-<div class="col">
-<% unless @sviTickeri[0][0] == nil %>
-    <% @sviTickeri.each do |ticker| %>
-        
-            <canvas id="<%=ticker[0].name+"chart"%>" width="400" height="400"></canvas>
-        
-    <% end %>
-
-
-        
-    
-
-</div>
-
+    	
+    <div class="col">
+    <% unless @sviTickeri[0][0] == nil %>
+        <% @sviTickeri.each_with_index do |ticker,index| %>
+            <%# if index.odd? %>
+                <canvas id="<%=ticker[0].name+"chart"%>" width="400" height="400"></canvas>
+            <%# end %>    
+        <% end %>
     </div>
-    <%# @podignutiPrice.each do |x| %>
-        <div>
-            <%# x.last_price  %>
-            <%# x.created_at  %>
-        </div>
-    <%# end %>
-    <%# @podignutiPrice.each do |x| %>
-    <div>
-            <%# x.volume  %>
-            <%# x.created_at  %>
-        </div>
+
     
-    <%# end %>
+    </div>
+    
+    
 </div>
 
 
@@ -72,29 +59,33 @@
 <script>
 
 <% @sviTickeri.each_with_index do |ticker, index| %>
-    
-var ctx = document.getElementById("<%=ticker[0].name+"chart"%>");
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-      data: {
-        labels: <%= @vremenaLabels %>,
-        datasets: [
-                    {
-                    data: <%= ticker.pluck(:last_price).map {|y| y - ticker.pluck(:last_price)[0] } %>,
-                    label: "<%=ticker[0].name%>",
-                    borderColor: "<%= @colorsArray[index] %>",
-                    fill: false
-                    }
-                  ]
-            },
-  options: {
-    title: {
-      display: true,
-      text: 'Coin prices in last 48h'
-    }
-  }
-});
+    <%# if index.odd? %>
+    var ctx = document.getElementById("<%=ticker[0].name+"chart"%>");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+          data: {
+            labels: <%= @vremenaLabels %>,
+            datasets: [
+                        {
+                        data: <%= ticker.pluck(:last_price).map {|y| y - ticker.pluck(:last_price)[0] } %>,
+                        label: "<%=ticker[0].name%>" + " price at 0: " + "<%=ticker.pluck(:last_price)[0]%>",
+                        borderColor: "<%= @colorsArray[index] %>",
+                        fill: false
+                        }
+                      ]
+                },
+      options: {
+        title: {
+          display: true,
+          text: "<%=ticker[0].name%> " + "prices in last 48h"
+        }
+      }
+    });
+  <%# end %>  
 <% end %>
+
+
+
 
 var ctx2 = document.getElementById("MyChartSVI");
 
@@ -105,15 +96,15 @@ var myLineChartSVI = new Chart(ctx2, {
         datasets:
         
         [
-            <% x = @sviPricesi-[@btcusdchart] %>
+            <% x = @sviPricesi - [[@btcusdchart, "btc"]] %>
             <%# x = @sviPricesi %>
-            <% x.each_with_index do |prices, index1| %>
-            {
-                    data: <%= prices.map{|y| y - prices[0]} %>,
-                    label: "neki",
-                    borderColor: "<%= @colorsArray[index1] %>",
-                    fill: false
-            }<% unless index1 == @sviPricesi.length-1  %>,<% end %>
+            <% x.each_with_index do |prices_sa_imenom, index1| %>
+                {
+                        data: <%= prices_sa_imenom[0].map{|y| y - prices_sa_imenom[0][0]} %>,
+                        label: "<%=prices_sa_imenom[1] %>",
+                        borderColor: "<%= @colorsArray[index1+1] %>", <%# +1 jer sam izbacio BTCUSD %>
+                        fill: false
+                }    <% unless index1 == x.length-1  %>,<% end %>
             <% end %>
         ]
          
@@ -121,7 +112,7 @@ var myLineChartSVI = new Chart(ctx2, {
   options: {
     title: {
       display: true,
-      text: 'Coin prices in last 48h'
+      text: ' All coins prices in last 48h'
     }
   }
 });

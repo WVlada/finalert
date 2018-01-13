@@ -14,18 +14,18 @@ class Ticker < ActiveRecord::Base
             urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
             urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
             urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
-            #urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
-            #urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
-            #urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
-            #urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
-            #urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
+            urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
+            urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
+            urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
+            urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
+            urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
             urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
             urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
             urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
             urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
-            urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
-            urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
-            urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
+            #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
+            #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
+            #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
             
             urls =  [
                     urlBTC, 
@@ -39,18 +39,20 @@ class Ticker < ActiveRecord::Base
                     urlEOS,
                     urlSAN,
                     urlOMG,
-                    #urlBCH,
-                    #urlNEO,
-                    #urlETP,
-                    #urlEDO,
-                    #urlBTG,
+                    urlBCH,
+                    urlNEO,
+                    urlETP,
+                    urlEDO,
+                    urlBTG,
                     urlRRT,
                     urlQTM,
                     urlAVT,
-                    urlDAT,
-                    urlYYW,
-                    urlGNT,
-                    urlSNT
+                    urlDAT
+                    #,
+                    #urlYYW
+                    #,
+                    #urlGNT,
+                    #urlSNT
                     ]
             
             @tickerARRAY = []
