@@ -57,7 +57,7 @@
 
 
 <script>
-<% unless Ticker.all.count < 25 %>
+<% unless @sviPricesi %>
 
 <% @sviTickeri.each_with_index do |ticker, index| %>
     <%# if index.odd? %>
