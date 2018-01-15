@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180103075103) do
   create_table "tickers", force: :cascade do |t|
     t.text     "name"
     t.float    "last_price"
+    t.float    "last_price_percent"
     t.float    "volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

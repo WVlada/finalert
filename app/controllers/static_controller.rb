@@ -25,38 +25,62 @@ class StaticController < ApplicationController
         #@gntusd = Ticker.where(name: "gntusd")
         #@sntusd = Ticker.where(name: "sntusd")
         
-        @colorsArray = ["#8e5ea2", "#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+        @colorsArray = ["#8e5ea2", "#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#FAFE52", "#D7DC09", "#DD9309", "#FF472F", "#CD2684", "#E56AB0","#4F31B1", "#B09EE8", "#23BC57", "#97ECB4"]
         @vremenaLabels = []
         @btcusd.pluck(:created_at).each do |x|
             @vremenaLabels << x.strftime("%I").to_i
         end
         
         
-        @btcusdchart = @btcusd.pluck(:last_price)
-        @ltcusdchart = @ltcusd.pluck(:last_price)
-        @ethusdchart = @ethusd.pluck(:last_price)
-        @zecusdchart = @zecusd.pluck(:last_price)
-        @xmrusdchart = @xmrusd.pluck(:last_price)
-        @dshusdchart = @dshusd.pluck(:last_price)
-        @xrpusdchart = @xrpusd.pluck(:last_price)
-        @iotusdchart = @iotusd.pluck(:last_price)
-        @eosusdchart = @eosusd.pluck(:last_price)
-        @sanusdchart = @sanusd.pluck(:last_price)
-        @omgusdchart = @omgusd.pluck(:last_price)
-        @bchusdchart = @bchusd.pluck(:last_price)
-        @neousdchart = @neousd.pluck(:last_price)
-        @etpusdchart = @etpusd.pluck(:last_price)
-        @edousdchart = @edousd.pluck(:last_price)
-        @btgusdchart = @btgusd.pluck(:last_price)
-        @rrtusdchart = @rrtusd.pluck(:last_price)
-        @qtmusdchart = @qtmusd.pluck(:last_price)
-        @avtusdchart = @avtusd.pluck(:last_price)
-        @datusdchart = @datusd.pluck(:last_price)
+        # @btcusdchart = @btcusd.pluck(:last_price)
+        # @ltcusdchart = @ltcusd.pluck(:last_price)
+        # @ethusdchart = @ethusd.pluck(:last_price)
+        # @zecusdchart = @zecusd.pluck(:last_price)
+        # @xmrusdchart = @xmrusd.pluck(:last_price)
+        # @dshusdchart = @dshusd.pluck(:last_price)
+        # @xrpusdchart = @xrpusd.pluck(:last_price)
+        # @iotusdchart = @iotusd.pluck(:last_price)
+        # @eosusdchart = @eosusd.pluck(:last_price)
+        # @sanusdchart = @sanusd.pluck(:last_price)
+        # @omgusdchart = @omgusd.pluck(:last_price)
+        # @bchusdchart = @bchusd.pluck(:last_price)
+        # @neousdchart = @neousd.pluck(:last_price)
+        # @etpusdchart = @etpusd.pluck(:last_price)
+        # @edousdchart = @edousd.pluck(:last_price)
+        # @btgusdchart = @btgusd.pluck(:last_price)
+        # @rrtusdchart = @rrtusd.pluck(:last_price)
+        # @qtmusdchart = @qtmusd.pluck(:last_price)
+        # @avtusdchart = @avtusd.pluck(:last_price)
+        # @datusdchart = @datusd.pluck(:last_price)
         #@yywusdchart = @yywusd.pluck(:last_price)
         #@gntusdchart = @gntusd.pluck(:last_price)
         #@sntusdchart = @sntusd.pluck(:last_price)
         
-        
+        ############### Percent ######################
+        @btcusdchart = @btcusd.pluck(:last_price_percent)
+        @ltcusdchart = @ltcusd.pluck(:last_price_percent)
+        @ethusdchart = @ethusd.pluck(:last_price_percent)
+        @zecusdchart = @zecusd.pluck(:last_price_percent)
+        @xmrusdchart = @xmrusd.pluck(:last_price_percent)
+        @dshusdchart = @dshusd.pluck(:last_price_percent)
+        @xrpusdchart = @xrpusd.pluck(:last_price_percent)
+        @iotusdchart = @iotusd.pluck(:last_price_percent)
+        @eosusdchart = @eosusd.pluck(:last_price_percent)
+        @sanusdchart = @sanusd.pluck(:last_price_percent)
+        @omgusdchart = @omgusd.pluck(:last_price_percent)
+        @bchusdchart = @bchusd.pluck(:last_price_percent)
+        @neousdchart = @neousd.pluck(:last_price_percent)
+        @etpusdchart = @etpusd.pluck(:last_price_percent)
+        @edousdchart = @edousd.pluck(:last_price_percent)
+        @btgusdchart = @btgusd.pluck(:last_price_percent)
+        @rrtusdchart = @rrtusd.pluck(:last_price_percent)
+        @qtmusdchart = @qtmusd.pluck(:last_price_percent)
+        @avtusdchart = @avtusd.pluck(:last_price_percent)
+        @datusdchart = @datusd.pluck(:last_price_percent)
+        #@yywusdchart = @yywusd.pluck(:last_price_percent)
+        #@gntusdchart = @gntusd.pluck(:last_price_percent)
+        #@sntusdchart = @sntusd.pluck(:last_price_percent)
+        ##############################################
         
         @sviPricesi = [
                         [ @btcusdchart, "btc"], 
@@ -214,9 +238,15 @@ class StaticController < ApplicationController
             
             end
             
-            @tickerARRAY.each do |ticker|
-            
-            Ticker.create!(last_price: ticker[:last_price], volume: ticker[:volume], name: ticker[:path])
+            @tickerARRAY.each_with_index do |ticker, index|
+                
+                if Ticker.where(name: ticker[:path]).last != nil
+                    last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
+                else
+                    last_price_percent = 0
+                end
+                
+                Ticker.create!(last_price: ticker[:last_price], last_price_percent: last_price_percent, volume: ticker[:volume], name: ticker[:path])
                 
             end
         
