@@ -241,13 +241,10 @@ class StaticController < ApplicationController
             @tickerARRAY.each_with_index do |ticker, index|
                 
                 if Ticker.where(name: ticker[:path]).last != nil
+                    
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
                     
-                    if true
-                        posalji_alert(ticker)
-                    else
-                    end
-                 
+                    
                 else
                     last_price_percent = 0
                 
@@ -258,7 +255,7 @@ class StaticController < ApplicationController
             end
         
         izbrisi_sve_preko_48h
-        (@tickerARRAY)
+        #(@tickerARRAY)
         ##########################
         
         respond_to do |format|

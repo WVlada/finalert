@@ -82,9 +82,19 @@ class Ticker < ActiveRecord::Base
             
             end
             
-            @tickerARRAY.each do |ticker|
-            
-            Ticker.create!(last_price: ticker[:last_price], volume: ticker[:volume], name: ticker[:path])
+            @tickerARRAY.each_with_index do |ticker, index|
+                
+                if Ticker.where(name: ticker[:path]).last != nil
+                    
+                    last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
+                    
+                    
+                else
+                    last_price_percent = 0
+                
+                end
+                
+                Ticker.create!(last_price: ticker[:last_price], last_price_percent: last_price_percent, volume: ticker[:volume], name: ticker[:path])
                 
             end
         
