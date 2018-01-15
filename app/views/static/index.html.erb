@@ -57,6 +57,7 @@
 
 
 <script>
+<% unless @sviPricesi[0][0].nil? %>
 
 <% @sviTickeri.each_with_index do |ticker, index| %>
     <%# if index.odd? %>
@@ -88,7 +89,6 @@
 
 
 var ctx2 = document.getElementById("MyChartSVI");
-
 var myLineChartSVI = new Chart(ctx2, {
     type: 'line',
       data: {
@@ -116,7 +116,7 @@ var myLineChartSVI = new Chart(ctx2, {
     }
   }
 });
-
+<% end %>
 
 
 // var ctx2 = document.getElementById("myChart2");
