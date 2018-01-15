@@ -242,8 +242,15 @@ class StaticController < ApplicationController
                 
                 if Ticker.where(name: ticker[:path]).last != nil
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
+                    
+                    if true
+                        posalji_alert(ticker)
+                    else
+                    end
+                 
                 else
                     last_price_percent = 0
+                
                 end
                 
                 Ticker.create!(last_price: ticker[:last_price], last_price_percent: last_price_percent, volume: ticker[:volume], name: ticker[:path])
@@ -251,13 +258,20 @@ class StaticController < ApplicationController
             end
         
         izbrisi_sve_preko_48h
-        
+        (@tickerARRAY)
         ##########################
         
         respond_to do |format|
                 format.html
                 format.js {  }
             end
+    end
+    
+    def posalji_alert(ticker_za_slanje)
+        
+        #attr_accessor :name, :email, :subject, :body
+        Message.create(name: "cccc", email: "odavde", body: "ticker_za_slanje")
+    
     end
     
     def izbrisi_sve_preko_48h

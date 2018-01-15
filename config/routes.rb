@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/pocni' => 'static#pocni'
   
   get '/izbrisi' => 'static#izbrisi'
+  
+  # ovo videti
+  match '/contact',  to: 'contact#create',  via: 'post'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

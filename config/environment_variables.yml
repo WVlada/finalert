@@ -1,0 +1,7 @@
+development:
+  GMAIL_ADRESS: railswebapptest@gmail.com
+  GMAIL_PASSWORD: railstest2017
+
+production:
+  GMAIL_ADRESS: railswebapptest@gmail.com
+  GMAIL_PASSWORD: railstest2017
