@@ -88,6 +88,10 @@ class Ticker < ActiveRecord::Base
                     
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
                     
+                    if last_price_percent > 5 || last_price_percent < -5
+                        posalji_alert(ticker)
+                    end
+                    
                     
                 else
                     last_price_percent = 0
@@ -106,5 +110,9 @@ class Ticker < ActiveRecord::Base
     
         Ticker.where("created_at < ?", 48.hours.ago).delete_all      
     
+    end
+    
+    def self.posalji_alert(ticker)
+        NotificationsMailer.new_message(ticker).deliver_now
     end
 end

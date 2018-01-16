@@ -16,4 +16,6 @@
 !/log/.keep
 /tmp
 
+/config/secrets.yml
+/config/environment_variables.yml
 

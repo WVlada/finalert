@@ -3,8 +3,8 @@ class NotificationsMailer < ActionMailer::Base
   default to: "vladimir.bukvic@live.com"
 
   def new_message(message)
-  	@message = message
-  	mail(:subject => "[RailsWebAppSite] #{message.subject}")
+  	#@message = message
+  	mail(:subject => "[RailsWebAppSite] #{message[:path]}")
   end
 
 end

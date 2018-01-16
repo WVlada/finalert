@@ -244,7 +244,6 @@ class StaticController < ApplicationController
                     
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
                     
-                    
                 else
                     last_price_percent = 0
                 
