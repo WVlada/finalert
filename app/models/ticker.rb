@@ -89,7 +89,10 @@ class Ticker < ActiveRecord::Base
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
                     
                     if last_price_percent > 5 || last_price_percent < -5
+                        puts "Ima tikera > 5%"
                         posalji_alert(ticker)
+                    else
+                        puts "Nema tikera > 5%"
                     end
                     
                     
