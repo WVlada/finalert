@@ -93,13 +93,13 @@ class Ticker < ActiveRecord::Base
                     if last_price_percent > 5
                         posalji_alert(ticker, "cena plus")
                     
-                    elsif last_price_percent < 5
+                    elsif last_price_percent < -5
                         posalji_alert(ticker, "cena minus")
                     
                     elsif volume_percent > 5
                         posalji_alert(ticker, "volume plus")
                     
-                    elsif volume_percent < 5
+                    elsif volume_percent < -5
                         posalji_alert(ticker, "volume minus")
                     
                     else
