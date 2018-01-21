@@ -1,26 +1,26 @@
 class StaticController < ApplicationController
     def index
         
-        @btcusd = Ticker.where(name: "btcusd") 
-        @ltcusd = Ticker.where(name: "ltcusd") 
-        @ethusd = Ticker.where(name: "ethusd") 
-        @zecusd = Ticker.where(name: "zecusd") 
-        @xmrusd = Ticker.where(name: "xmrusd") 
-        @dshusd = Ticker.where(name: "dshusd") 
-        @xrpusd = Ticker.where(name: "xrpusd") 
-        @iotusd = Ticker.where(name: "iotusd") 
-        @eosusd = Ticker.where(name: "eosusd")
-        @sanusd = Ticker.where(name: "sanusd")
-        @omgusd = Ticker.where(name: "omgusd")
-        @bchusd = Ticker.where(name: "bchusd")
-        @neousd = Ticker.where(name: "neousd")
-        @etpusd = Ticker.where(name: "etpusd")
-        @edousd = Ticker.where(name: "edousd")
-        @btgusd = Ticker.where(name: "btgusd")
-        @rrtusd = Ticker.where(name: "rrtusd")
-        @qtmusd = Ticker.where(name: "qtmusd")
-        @avtusd = Ticker.where(name: "avtusd")
-        @datusd = Ticker.where(name: "datusd")
+        @btcusd = Ticker.where(name: "btcusd").order(:created_at) 
+        @ltcusd = Ticker.where(name: "ltcusd").order(:created_at)
+        @ethusd = Ticker.where(name: "ethusd").order(:created_at) 
+        @zecusd = Ticker.where(name: "zecusd").order(:created_at) 
+        @xmrusd = Ticker.where(name: "xmrusd").order(:created_at) 
+        @dshusd = Ticker.where(name: "dshusd").order(:created_at) 
+        @xrpusd = Ticker.where(name: "xrpusd").order(:created_at) 
+        @iotusd = Ticker.where(name: "iotusd").order(:created_at) 
+        @eosusd = Ticker.where(name: "eosusd").order(:created_at)
+        @sanusd = Ticker.where(name: "sanusd").order(:created_at)
+        @omgusd = Ticker.where(name: "omgusd").order(:created_at)
+        @bchusd = Ticker.where(name: "bchusd").order(:created_at)
+        @neousd = Ticker.where(name: "neousd").order(:created_at)
+        @etpusd = Ticker.where(name: "etpusd").order(:created_at)
+        @edousd = Ticker.where(name: "edousd").order(:created_at)
+        @btgusd = Ticker.where(name: "btgusd").order(:created_at)
+        @rrtusd = Ticker.where(name: "rrtusd").order(:created_at)
+        @qtmusd = Ticker.where(name: "qtmusd").order(:created_at)
+        @avtusd = Ticker.where(name: "avtusd").order(:created_at)
+        @datusd = Ticker.where(name: "datusd").order(:created_at)
         #@yywusd = Ticker.where(name: "yywusd")
         #@gntusd = Ticker.where(name: "gntusd")
         #@sntusd = Ticker.where(name: "sntusd")
@@ -286,103 +286,103 @@ class StaticController < ApplicationController
             end
     end
     
-    def update
-        require 'uri'
-        require 'net/http'
-        ##########################
-            urlBTC = URI("https://api.bitfinex.com/v1/pubticker/btcusd")
-            urlLTC = URI("https://api.bitfinex.com/v1/pubticker/ltcusd")
-            urlETH = URI("https://api.bitfinex.com/v1/pubticker/ethusd")
-            urlZEC = URI("https://api.bitfinex.com/v1/pubticker/zecusd")
-            urlXMR = URI("https://api.bitfinex.com/v1/pubticker/xmrusd")
-            urlDAS = URI("https://api.bitfinex.com/v1/pubticker/dshusd")
-            urlXRP = URI("https://api.bitfinex.com/v1/pubticker/xrpusd")
-            urlIOT = URI("https://api.bitfinex.com/v1/pubticker/iotusd")
-            urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
-            urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
-            urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
-            urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
-            urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
-            urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
-            urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
-            urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
-            urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
-            urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
-            urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
-            urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
-            #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
-            #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
-            #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
+    #def update
+    #     require 'uri'
+    #     require 'net/http'
+    #     ##########################
+    #         urlBTC = URI("https://api.bitfinex.com/v1/pubticker/btcusd")
+    #         urlLTC = URI("https://api.bitfinex.com/v1/pubticker/ltcusd")
+    #         urlETH = URI("https://api.bitfinex.com/v1/pubticker/ethusd")
+    #         urlZEC = URI("https://api.bitfinex.com/v1/pubticker/zecusd")
+    #         urlXMR = URI("https://api.bitfinex.com/v1/pubticker/xmrusd")
+    #         urlDAS = URI("https://api.bitfinex.com/v1/pubticker/dshusd")
+    #         urlXRP = URI("https://api.bitfinex.com/v1/pubticker/xrpusd")
+    #         urlIOT = URI("https://api.bitfinex.com/v1/pubticker/iotusd")
+    #         urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
+    #         urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
+    #         urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
+    #         urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
+    #         urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
+    #         urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
+    #         urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
+    #         urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
+    #         urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
+    #         urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
+    #         urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
+    #         urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
+    #         #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
+    #         #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
+    #         #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
             
-            urls =  [
-                    urlBTC, 
-                    urlLTC,
-                    urlETH,
-                    urlZEC,
-                    urlXMR,
-                    urlDAS,
-                    urlXRP,
-                    urlIOT,
-                    urlEOS,
-                    urlSAN,
-                    urlOMG,
-                    urlBCH,
-                    urlNEO,
-                    urlETP,
-                    urlEDO,
-                    urlBTG,
-                    urlRRT,
-                    urlQTM,
-                    urlAVT,
-                    urlDAT
-                    #,
-                    #urlYYW
-                    #,
-                    #urlGNT,
-                    #urlSNT
-                    ]
+    #         urls =  [
+    #                 urlBTC, 
+    #                 urlLTC,
+    #                 urlETH,
+    #                 urlZEC,
+    #                 urlXMR,
+    #                 urlDAS,
+    #                 urlXRP,
+    #                 urlIOT,
+    #                 urlEOS,
+    #                 urlSAN,
+    #                 urlOMG,
+    #                 urlBCH,
+    #                 urlNEO,
+    #                 urlETP,
+    #                 urlEDO,
+    #                 urlBTG,
+    #                 urlRRT,
+    #                 urlQTM,
+    #                 urlAVT,
+    #                 urlDAT
+    #                 #,
+    #                 #urlYYW
+    #                 #,
+    #                 #urlGNT,
+    #                 #urlSNT
+    #                 ]
             
-            @tickerARRAY = []
+    #         @tickerARRAY = []
             
-            urls.each do |ticker|
+    #         urls.each do |ticker|
             
-                http = Net::HTTP.new(ticker.host, ticker.port)
-                http.use_ssl = true
-                puts ticker
-                request = Net::HTTP::Get.new(ticker)
+    #             http = Net::HTTP.new(ticker.host, ticker.port)
+    #             http.use_ssl = true
+    #             puts ticker
+    #             request = Net::HTTP::Get.new(ticker)
                 
-                response = http.request(request)
-                last_price = response.read_body.scan(/"last_price":"([\d]*.[\d]*)/)[0][0]
-                volume = response.read_body.scan(/"volume":"([\d]*)/)[0][0]
-                path1 = ticker.path
+    #             response = http.request(request)
+    #             last_price = response.read_body.scan(/"last_price":"([\d]*.[\d]*)/)[0][0]
+    #             volume = response.read_body.scan(/"volume":"([\d]*)/)[0][0]
+    #             path1 = ticker.path
                 
-                path = path1.split(//).last(6).join
+    #             path = path1.split(//).last(6).join
                 
-                hash = {}
+    #             hash = {}
                 
-                hash[:path] = path.to_s
-                hash[:volume] = volume.to_i
-                hash [:last_price] = last_price.to_f
+    #             hash[:path] = path.to_s
+    #             hash[:volume] = volume.to_i
+    #             hash [:last_price] = last_price.to_f
                 
-                @tickerARRAY << hash
+    #             @tickerARRAY << hash
                 
             
-            end
+    #         end
             
-            @tickerARRAY.each do |ticker|
+    #         @tickerARRAY.each do |ticker|
             
-            Ticker.create!(last_price: ticker[:last_price], volume: ticker[:volume], name: ticker[:path])
+    #         Ticker.create!(last_price: ticker[:last_price], volume: ticker[:volume], name: ticker[:path])
                 
-            end
+    #         end
         
-        izbrisi_sve_preko_48h
+    #     izbrisi_sve_preko_48h
         
-        ##########################
+    #     ##########################
         
-        respond_to do |format|
-                format.html
-                format.js {  }
-            end
-    end
+    #     respond_to do |format|
+    #             format.html
+    #             format.js {  }
+    #         end
+    # end
     
 end

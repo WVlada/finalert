@@ -22,7 +22,7 @@
             </thead>
             <tbody id="body_row">
 
-                <% Ticker.all.reverse.each_with_index do |x, i| %>
+                <% Ticker.all.order(:created_at).each_with_index do |x, i| %>
                 <tr>
                      <td><%= x.name %></td>
 

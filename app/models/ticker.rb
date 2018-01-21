@@ -87,12 +87,23 @@ class Ticker < ActiveRecord::Base
                 if Ticker.where(name: ticker[:path]).last != nil
                     
                     last_price_percent = ((ticker[:last_price]/Ticker.where(name: ticker[:path]).last.last_price) - 1) * 100
+                    volume_percent = ((ticker[:volume]/Ticker.where(name: ticker[:path]).last.volume) - 1) * 100
                     
-                    if last_price_percent > 5 || last_price_percent < -5
-                        puts "Ima tikera > 5%"
-                        posalji_alert(ticker)
+                    
+                    if last_price_percent > 5
+                        posalji_alert(ticker, "cena plus")
+                    
+                    if last_price_percent < 5
+                        posalji_alert(ticker, "cena minus")
+                    
+                    if volume_percent > 5
+                        posalji_alert(ticker, "volume plus")
+                    
+                    if volume_percent < 5
+                        posalji_alert(ticker, "volume minus")
+                    
                     else
-                        puts "Nema tikera > 5%"
+                        puts "Nema znacajnih promena"
                     end
                     
                     
@@ -115,7 +126,7 @@ class Ticker < ActiveRecord::Base
     
     end
     
-    def self.posalji_alert(ticker)
-        NotificationsMailer.new_message(ticker).deliver_now
+    def self.posalji_alert(ticker, text)
+        NotificationsMailer.new_message(ticker, text).deliver_now
     end
 end
