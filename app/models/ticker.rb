@@ -90,16 +90,16 @@ class Ticker < ActiveRecord::Base
                     volume_percent = ((ticker[:volume]/Ticker.where(name: ticker[:path]).last.volume) - 1) * 100
                     
                     
-                    if last_price_percent > 5
+                    if last_price_percent > 8
                         posalji_alert(ticker, "cena plus")
                     
-                    elsif last_price_percent < -5
+                    elsif last_price_percent < -8
                         posalji_alert(ticker, "cena minus")
                     
-                    elsif volume_percent > 5
+                    elsif volume_percent > 8
                         posalji_alert(ticker, "volume plus")
                     
-                    elsif volume_percent < -5
+                    elsif volume_percent < -8
                         posalji_alert(ticker, "volume minus")
                     
                     else
