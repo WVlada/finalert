@@ -5,10 +5,17 @@
             <canvas id="MyChartSVI" width="400" height="400"></canvas>
             <button onclick="obelezi()"> Obelezi </button>
         </div>
-        </div>
+</div>
         <div class="row">
         <div class="col">
             <canvas id="svi_normalno" width="400" height="400"></canvas>
+        </div>
+
+</div>
+
+<div class="row">
+        <div class="col">
+            <canvas id="samo_eth_btc" width="400" height="400"></canvas>
         </div>
 
 </div>
@@ -155,6 +162,37 @@ var myLineChartSVINormal = new Chart(ctx3, {
     }
   }
 });
+
+var ctx4 = document.getElementById("samo_eth_btc");
+var myLineChartSVINormal = new Chart(ctx4, {
+    type: 'line',
+      data: {
+        labels: <%= @vremenaLabels %> ,
+        datasets:
+        
+        [
+            <% x = [ @sviPricesiNormal[0], @sviPricesiNormal[2] ] %>
+            <%# x = @sviPricesi %>
+            <% x.each_with_index do |prices_sa_imenom, index1| %>
+                {
+                        data: <%= prices_sa_imenom[0].map{|y| y - prices_sa_imenom[0][0]} %>,
+                        label: "<%=prices_sa_imenom[1] %>",
+                        borderColor: "<%= @colorsArray[index1+1] %>", <%# +1 jer sam izbacio BTCUSD %>
+                        fill: false
+                }    <% unless index1 == x.length-1  %>,<% end %>
+            <% end %>
+        ]
+         
+            },
+  options: {
+    title: {
+      display: true,
+      text: ' All coins prices in last 48h - Normal'
+    }
+  }
+});
+
+
 <% end %>
 
 
