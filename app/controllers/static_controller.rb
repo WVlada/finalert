@@ -12,15 +12,15 @@ class StaticController < ApplicationController
         @eosusd = Ticker.where(name: "eosusd").order(:created_at)
         @sanusd = Ticker.where(name: "sanusd").order(:created_at)
         @omgusd = Ticker.where(name: "omgusd").order(:created_at)
-        @bchusd = Ticker.where(name: "bchusd").order(:created_at)
+        #@bchusd = Ticker.where(name: "bchusd").order(:created_at)
         @neousd = Ticker.where(name: "neousd").order(:created_at)
-        @etpusd = Ticker.where(name: "etpusd").order(:created_at)
-        @edousd = Ticker.where(name: "edousd").order(:created_at)
-        @btgusd = Ticker.where(name: "btgusd").order(:created_at)
-        @rrtusd = Ticker.where(name: "rrtusd").order(:created_at)
+        #@etpusd = Ticker.where(name: "etpusd").order(:created_at)
+        #@edousd = Ticker.where(name: "edousd").order(:created_at)
+        #@btgusd = Ticker.where(name: "btgusd").order(:created_at)
+        #@rrtusd = Ticker.where(name: "rrtusd").order(:created_at)
         @qtmusd = Ticker.where(name: "qtmusd").order(:created_at)
-        @avtusd = Ticker.where(name: "avtusd").order(:created_at)
-        @datusd = Ticker.where(name: "datusd").order(:created_at)
+        #@avtusd = Ticker.where(name: "avtusd").order(:created_at)
+        #@datusd = Ticker.where(name: "datusd").order(:created_at)
         #@yywusd = Ticker.where(name: "yywusd")
         #@gntusd = Ticker.where(name: "gntusd")
         #@sntusd = Ticker.where(name: "sntusd")
@@ -32,24 +32,24 @@ class StaticController < ApplicationController
         end
         
         
-        # @btcusdchart = @btcusd.pluck(:last_price)
-        # @ltcusdchart = @ltcusd.pluck(:last_price)
-        # @ethusdchart = @ethusd.pluck(:last_price)
-        # @zecusdchart = @zecusd.pluck(:last_price)
-        # @xmrusdchart = @xmrusd.pluck(:last_price)
-        # @dshusdchart = @dshusd.pluck(:last_price)
-        # @xrpusdchart = @xrpusd.pluck(:last_price)
-        # @iotusdchart = @iotusd.pluck(:last_price)
-        # @eosusdchart = @eosusd.pluck(:last_price)
-        # @sanusdchart = @sanusd.pluck(:last_price)
-        # @omgusdchart = @omgusd.pluck(:last_price)
+         @btcusdchartNormal = @btcusd.pluck(:last_price)
+         @ltcusdchartNormal = @ltcusd.pluck(:last_price)
+         @ethusdchartNormal = @ethusd.pluck(:last_price)
+         @zecusdchartNormal = @zecusd.pluck(:last_price)
+         @xmrusdchartNormal = @xmrusd.pluck(:last_price)
+         @dshusdchartNormal = @dshusd.pluck(:last_price)
+         @xrpusdchartNormal = @xrpusd.pluck(:last_price)
+         @iotusdchartNormal = @iotusd.pluck(:last_price)
+         @eosusdchartNormal = @eosusd.pluck(:last_price)
+         @sanusdchartNormal = @sanusd.pluck(:last_price)
+         @omgusdchartNormal = @omgusd.pluck(:last_price)
         # @bchusdchart = @bchusd.pluck(:last_price)
-        # @neousdchart = @neousd.pluck(:last_price)
+         @neousdchartNormal = @neousd.pluck(:last_price)
         # @etpusdchart = @etpusd.pluck(:last_price)
         # @edousdchart = @edousd.pluck(:last_price)
         # @btgusdchart = @btgusd.pluck(:last_price)
         # @rrtusdchart = @rrtusd.pluck(:last_price)
-        # @qtmusdchart = @qtmusd.pluck(:last_price)
+         @qtmusdchartNormal = @qtmusd.pluck(:last_price)
         # @avtusdchart = @avtusd.pluck(:last_price)
         # @datusdchart = @datusd.pluck(:last_price)
         #@yywusdchart = @yywusd.pluck(:last_price)
@@ -68,20 +68,48 @@ class StaticController < ApplicationController
         @eosusdchart = @eosusd.pluck(:last_price_percent)
         @sanusdchart = @sanusd.pluck(:last_price_percent)
         @omgusdchart = @omgusd.pluck(:last_price_percent)
-        @bchusdchart = @bchusd.pluck(:last_price_percent)
+        #@bchusdchart = @bchusd.pluck(:last_price_percent)
         @neousdchart = @neousd.pluck(:last_price_percent)
-        @etpusdchart = @etpusd.pluck(:last_price_percent)
-        @edousdchart = @edousd.pluck(:last_price_percent)
-        @btgusdchart = @btgusd.pluck(:last_price_percent)
-        @rrtusdchart = @rrtusd.pluck(:last_price_percent)
+        #@etpusdchart = @etpusd.pluck(:last_price_percent)
+        #@edousdchart = @edousd.pluck(:last_price_percent)
+        #@btgusdchart = @btgusd.pluck(:last_price_percent)
+        #@rrtusdchart = @rrtusd.pluck(:last_price_percent)
         @qtmusdchart = @qtmusd.pluck(:last_price_percent)
-        @avtusdchart = @avtusd.pluck(:last_price_percent)
-        @datusdchart = @datusd.pluck(:last_price_percent)
+        #@avtusdchart = @avtusd.pluck(:last_price_percent)
+        #@datusdchart = @datusd.pluck(:last_price_percent)
         #@yywusdchart = @yywusd.pluck(:last_price_percent)
         #@gntusdchart = @gntusd.pluck(:last_price_percent)
         #@sntusdchart = @sntusd.pluck(:last_price_percent)
         ##############################################
         
+        @sviPricesiNormal = [
+                        [ @btcusdchartNormal, "btc"], 
+                        [ @ltcusdchartNormal, "ltc"], 
+                        [ @ethusdchartNormal, "eth"],
+                        [ @zecusdchartNormal, "zec"], 
+                        [ @xmrusdchartNormal, "xmr"],
+                        [ @dshusdchartNormal, "dsh"],
+                        [ @xrpusdchartNormal, "xrp"], 
+                        [ @iotusdchartNormal, "iot"], 
+                        [ @eosusdchartNormal, "eos"], 
+                        [ @sanusdchartNormal, "san"],
+                        [ @omgusdchartNormal, "omg"],
+                        #[ @bchusdchart, "bch"],
+                        [ @neousdchartNormal, "neo"],
+                        #[ @etpusdchart, "eot"],
+                        #[ @edousdchart, "edo"],
+                        #[ @btgusdchart, "btg"],
+                        #[ @rrtusdchart, "rrt"],
+                        [ @qtmusdchartNormal, "qtm"]
+                        #[ @avtusdchart, "avt"],
+                        #[ @datusdchart, "dat"]
+                        #,
+                        #[ @yywusdchart, "yyw"]
+                        #,
+                        #[ @gntusdchart, "gnt"],
+                        #[ @sntusdchart, "snt"]
+                        
+                        ]
         @sviPricesi = [
                         [ @btcusdchart, "btc"], 
                         [ @ltcusdchart, "ltc"], 
@@ -94,15 +122,15 @@ class StaticController < ApplicationController
                         [ @eosusdchart, "eos"], 
                         [ @sanusdchart, "san"],
                         [ @omgusdchart, "omg"],
-                        [ @bchusdchart, "bch"],
+                        #[ @bchusdchart, "bch"],
                         [ @neousdchart, "neo"],
-                        [ @etpusdchart, "eot"],
-                        [ @edousdchart, "edo"],
-                        [ @btgusdchart, "btg"],
-                        [ @rrtusdchart, "rrt"],
-                        [ @qtmusdchart, "qtm"],
-                        [ @avtusdchart, "avt"],
-                        [ @datusdchart, "dat"]
+                        #[ @etpusdchart, "eot"],
+                        #[ @edousdchart, "edo"],
+                        #[ @btgusdchart, "btg"],
+                        #[ @rrtusdchart, "rrt"],
+                        [ @qtmusdchart, "qtm"]
+                        #[ @avtusdchart, "avt"],
+                        #[ @datusdchart, "dat"]
                         #,
                         #[ @yywusdchart, "yyw"]
                         #,
@@ -113,15 +141,15 @@ class StaticController < ApplicationController
         
         @sviTickeri = [@btcusd, @ltcusd, @ethusd, @zecusd, @xmrusd, @dshusd, @iotusd, @eosusd, @sanusd,
                         @omgusd,
-                        @bchusd,
+                        #@bchusd,
                         @neousd,
-                        @etpusd,
-                        @edousd,
-                        @btgusd,
-                        @rrtusd,
-                        @qtmusd,
-                        @avtusd,
-                        @datusd
+                        #@etpusd,
+                        #@edousd,
+                        #@btgusd,
+                        #@rrtusd,
+                        @qtmusd#,
+                        #@avtusd,
+                        #@datusd
                         #,
                         #@yywusd
                         #,
@@ -170,15 +198,15 @@ class StaticController < ApplicationController
             urlEOS = URI("https://api.bitfinex.com/v1/pubticker/eosusd")
             urlSAN = URI("https://api.bitfinex.com/v1/pubticker/sanusd")
             urlOMG = URI("https://api.bitfinex.com/v1/pubticker/omgusd")
-            urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
+            #urlBCH = URI("https://api.bitfinex.com/v1/pubticker/bchusd")
             urlNEO = URI("https://api.bitfinex.com/v1/pubticker/neousd")
-            urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
-            urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
-            urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
-            urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
+            #urlETP = URI("https://api.bitfinex.com/v1/pubticker/etpusd")
+            #urlEDO = URI("https://api.bitfinex.com/v1/pubticker/edousd")
+            #urlBTG = URI("https://api.bitfinex.com/v1/pubticker/btgusd")
+            #urlRRT = URI("https://api.bitfinex.com/v1/pubticker/rrtusd")
             urlQTM = URI("https://api.bitfinex.com/v1/pubticker/qtmusd")
-            urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
-            urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
+            #urlAVT = URI("https://api.bitfinex.com/v1/pubticker/avtusd")
+            #urlDAT = URI("https://api.bitfinex.com/v1/pubticker/datusd")
             #urlYYW = URI("https://api.bitfinex.com/v1/pubticker/yywusd")
             #urlGNT = URI("https://api.bitfinex.com/v1/pubticker/gntusd")
             #urlSNT = URI("https://api.bitfinex.com/v1/pubticker/sntusd")
@@ -195,15 +223,15 @@ class StaticController < ApplicationController
                     urlEOS,
                     urlSAN,
                     urlOMG,
-                    urlBCH,
+                    #urlBCH,
                     urlNEO,
-                    urlETP,
-                    urlEDO,
-                    urlBTG,
-                    urlRRT,
-                    urlQTM,
-                    urlAVT,
-                    urlDAT
+                    #urlETP,
+                    #urlEDO,
+                    #urlBTG,
+                    #urlRRT,
+                    urlQTM#,
+                    #urlAVT,
+                    #urlDAT
                     #,
                     #urlYYW
                     #,

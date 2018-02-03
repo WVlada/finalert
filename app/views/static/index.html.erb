@@ -5,11 +5,19 @@
             <canvas id="MyChartSVI" width="400" height="400"></canvas>
             <button onclick="obelezi()"> Obelezi </button>
         </div>
+        </div>
+        <div class="row">
+        <div class="col">
+            <canvas id="svi_normalno" width="400" height="400"></canvas>
+        </div>
+
 </div>
 
 <div class="row">
 
     	<div class="col">
+    	    
+    	    
     		
     		<table class="pregled_table">
             <thead>
@@ -40,12 +48,14 @@
     	</div>
     	
     <div class="col">
-    <% unless @sviTickeri[0][0] == nil %>
+        
+<% unless @sviTickeri[0][0] == nil %>
         <% @sviTickeri.each_with_index do |ticker,index| %>
             <%# if index.odd? %>
                 <canvas id="<%=ticker[0].name+"chart"%>" width="400" height="400"></canvas>
+                
             <%# end %>    
-        <% end %>
+<% end %>
     </div>
 
     
@@ -57,7 +67,7 @@
 
 
 <script>
-<% unless @sviPricesi.nil? %>
+<% unless @sviPricesi.nil? && @sviPricesiNormal.nil? %>
 
 <% @sviTickeri.each_with_index do |ticker, index| %>
     <%# if index.odd? %>
@@ -113,6 +123,35 @@ var myLineChartSVI = new Chart(ctx2, {
     title: {
       display: true,
       text: ' All coins prices in last 48h'
+    }
+  }
+});
+
+var ctx3 = document.getElementById("svi_normalno");
+var myLineChartSVINormal = new Chart(ctx3, {
+    type: 'line',
+      data: {
+        labels: <%= @vremenaLabels %>,
+        datasets:
+        
+        [
+            <% x = @sviPricesiNormal - [[@btcusdchartNormal, "btc"]] %>
+            <%# x = @sviPricesi %>
+            <% x.each_with_index do |prices_sa_imenom, index1| %>
+                {
+                        data: <%= prices_sa_imenom[0].map{|y| y - prices_sa_imenom[0][0]} %>,
+                        label: "<%=prices_sa_imenom[1] %>",
+                        borderColor: "<%= @colorsArray[index1+1] %>", <%# +1 jer sam izbacio BTCUSD %>
+                        fill: false
+                }    <% unless index1 == x.length-1  %>,<% end %>
+            <% end %>
+        ]
+         
+            },
+  options: {
+    title: {
+      display: true,
+      text: ' All coins prices in last 48h - Normal'
     }
   }
 });
