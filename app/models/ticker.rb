@@ -39,7 +39,7 @@ class Ticker < ActiveRecord::Base
                     urlEOS,
                     urlSAN,
                     urlOMG,
-                    urlBCH,
+                    #urlBCH,
                     urlNEO,
                     #urlETP,
                     #urlEDO,
