@@ -294,7 +294,7 @@ class StaticController < ApplicationController
     def posalji_alert(ticker_za_slanje)
         
         #attr_accessor :name, :email, :subject, :body
-        Message.create(name: "cccc", email: "odavde", body: "ticker_za_slanje")
+        ##Message.create(name: "cccc", email: "odavde", body: "ticker_za_slanje")
     
     end
     
