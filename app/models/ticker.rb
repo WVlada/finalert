@@ -91,16 +91,16 @@ class Ticker < ActiveRecord::Base
                     
                     
                     if last_price_percent > 8
-                        posalji_alert(ticker, "cena plus")
+                        #posalji_alert(ticker, "cena plus")
                     
                     elsif last_price_percent < -8
-                        posalji_alert(ticker, "cena minus")
+                        #posalji_alert(ticker, "cena minus")
                     
                     elsif volume_percent > 8
-                        posalji_alert(ticker, "volume plus")
+                        #posalji_alert(ticker, "volume plus")
                     
                     elsif volume_percent < -8
-                        posalji_alert(ticker, "volume minus")
+                        #posalji_alert(ticker, "volume minus")
                     
                     else
                         puts "Nema znacajnih promena"
